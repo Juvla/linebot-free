@@ -1,0 +1,19 @@
+{
+  "name": "sabi-123",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@line/bot-sdk": "^3.1.1",
+    "express": "^4.16.1",
+    "google-spreadsheet": "^2.0.4",
+    "line-messaging": "^1.1.8",
+    "linebot": "^1.3.0",
+    "request": "^2.83.0"
+  }
+}
