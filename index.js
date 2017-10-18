@@ -4,13 +4,13 @@ const line = require('@line/bot-sdk');
 var request = require('request');
 var googleSpreadSheet = require('google-spreadsheet');
 var bot = linebot({
-   channelId: "1541439759",
-   channelSecret: "ea8e88609e2a89e5ae5427c0f40824dd",
-   channelAccessToken: "VAIRvym/JLh1j3TGEZyIXW4D6NejhOfI94lLkA6JIEgRu82D0aOYh8HpHh6saeO9Urupc5/u96Wcl6x6AqyUq6tBJBzKCcafufa9LBh347myFNXdtRYIZjlHJRM1TS0YQ/hNoc6URkGWQ9TnfY14PwdB04t89/1O/w1cDnyilFU="
+   channelId: "1541476379",
+   channelSecret: "7f38babaae43a9d9d366090bfeea2c33",
+   channelAccessToken: "BoUM+4mnBIWwo5iX5FkO82jrdWEociH8ivXD//Boe6qYN+F23wY9nG5bj/FraswqBG+sz3fg8Su6Gq+Go8JUQzBtPqkgQjZ34Lb5ZvEd8LJaV+uHWmXivCAU20jG2WcSLc86XKNszQozMhPEb6S4/AdB04t89/1O/w1cDnyilFU="
 });
 
 var config={
-  channelAccessToken: "nbo5crna05djjHAQNYVs5RdmfAjbI2eH1N16DGrMPOQb1FzJ74kY9XDKZzoo/6/87YQNbjzmUppVlzVEtnLobOSzEGs0bXSdDTo8k5XqdETmnRnhl9s20jHEtgNQy9aDlqx0t3XDgr7Sx/AAlZ9fwgdB04t89/1O/w1cDnyilFU="
+  channelAccessToken: "BoUM+4mnBIWwo5iX5FkO82jrdWEociH8ivXD//Boe6qYN+F23wY9nG5bj/FraswqBG+sz3fg8Su6Gq+Go8JUQzBtPqkgQjZ34Lb5ZvEd8LJaV+uHWmXivCAU20jG2WcSLc86XKNszQozMhPEb6S4/AdB04t89/1O/w1cDnyilFU="
 };
 const client = new line.Client(config);
 var count =0;
