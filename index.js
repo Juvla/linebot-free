@@ -19,14 +19,8 @@ bot.on('message', function(event) {
         
     
     if(event.message.type=='text'){
-      
+         
       var msg = event.message.text;//如果型態是文字
-      console.log("message:"+msg);
-        event.reply(msg).then((data)=>{
-
-        }).catch((err)=>{
-          console.log(err);
-        });
       if(event.source.type=="group"){//聊天室
         parseLogic2(msg,event);
       }else{
