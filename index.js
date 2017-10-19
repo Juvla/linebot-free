@@ -302,36 +302,36 @@ function searchPersonalData(msg){
   });
 
 }
-setTimeout(parseMembersData,10000);
+//setTimeout(parseMembersData,10000);
 var xin= new Array();
 var ming = new Array();
 var middlename = new Array();
-setTimeout(parseMembersData,5000);
+//setTimeout(parseMembersData,5000);
 function parseMembersData(msg){
-  var msg="虹慶";
+  //var msg="江虹慶";
   var resp= "";
   var multi = new Array();
   var option = 0;
   var title="";
-  var ifskip=false;
+  
   membersProfile.forEach((member,yy)=>{
     member.forEach((detail,index)=>{
       if(typeof detail!="undefined"&&detail!=""&&msg.indexOf(detail)!=-1){
         switch(index){
           case 0://職稱
             resp=detail+"是"+member[2];
-            ifskip=true;
+            
             return resp;
             break;
           case 1://簡稱
             resp ="我知道"+member[1]+"是"+member[3]+"的公司哦～";
-            ifskip=true;
+            
             break;
           case 2://姓名
             resp = new Array();
             resp.push(member[2]+"的資料如下 mobile:"+member[6]+" 公司:"+member[1]+" 地址:"+member[4]);
             resp.push("主要產品:"+member[9]);
-            ifskip=true;
+            
             return resp;
           case 3://推薦人
             //resp="推薦人";
@@ -344,8 +344,7 @@ function parseMembersData(msg){
             resp= new Array();
             var x = 0;
             resp.push(member[8]+"我好像認識耶！他是傳說中的"+member[2]+"對吧～");
-            resp.push(member[2]+"資料如下 mobile:"+member[6]+" 公司:"+member[1]+" 地址:"+member[4]);
-            ifskip=true;
+            resp.push(member[2]+"資料如下 mobile:"+member[6]+" 公司:"+member[1]+" 地址:"+member[4]);            
             return resp;  
             break;        
           case 9://主要產品
@@ -371,6 +370,7 @@ function parseMembersData(msg){
       
     });   
   });
+
   membersProfile.forEach((member,yy)=>{
     if(msg.indexOf(xin[yy])!=-1){//姓
       title = xin[yy];
@@ -393,8 +393,11 @@ function parseMembersData(msg){
     }else if(msg.indexOf(ming[yy])!=-1){
       multi.push(member[2]);
       option =6;
+    }else{
+      
     }
   });
+
 
   if(multi.length>0){
     multi.forEach((name)=>{
