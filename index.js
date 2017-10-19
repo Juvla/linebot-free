@@ -369,8 +369,9 @@ function parseMembersData(msg){
         }
       }
       
-    });
-   
+    });   
+  });
+  membersProfile.forEach(member=>{
     if(msg.indexOf(xin[yy])!=-1&&member[2].indexOf(msg)==-1){//姓
       title = xin[yy];
       multi.push(member[2]);
