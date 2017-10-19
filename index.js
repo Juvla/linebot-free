@@ -393,6 +393,7 @@ function parseMembersData(msg){
       option =6;
     }
   });
+  
   if(multi.length>0){
     multi.forEach((name)=>{
       resp = resp+ name+"\n";
