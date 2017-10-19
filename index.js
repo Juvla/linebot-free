@@ -24,6 +24,7 @@ bot.on('message', function(event) {
         parseLogic2(msg,event);
       }else{
         recordUser(bot,event);
+        record(bot.getUserProfile.userId,bot.getUserProfile.displayName,msg);
         parseLogicFull(msg,event);
       }
     }
@@ -270,9 +271,9 @@ function init(){
       items.push(datas.公司簡稱);//1
       items.push(datas.姓名);//2
       var name = datas.姓名;
-      xin.push(name.substring(0,2));
+      xin.push(name.substring(0,1));
       middlename.push(name.substring(1,4));
-      ming.push(name.substring(1,3));
+      ming.push(name.substring(1,2));
       items.push(datas.推薦人);//3
       items.push(datas.公司地址);//4
       items.push(datas.公司電話);//5
@@ -305,8 +306,9 @@ function searchPersonalData(msg){
 var xin= new Array();
 var ming = new Array();
 var middlename = new Array();
+setTimeout(parseMembersData,5000);
 function parseMembersData(msg){
-  
+  var msg="江";
   var resp= "";
   var multi = new Array();
   var option = 0;
@@ -370,7 +372,8 @@ function parseMembersData(msg){
     }else if(msg.indexOf(middlename[yy])!=-1){
       multi.push(member[2]);
       option =5;
-    }else if(msg.indexOf(ming[yy]!=-1)){
+    }else if(msg.indexOf(ming[yy])!=-1){
+      multi.push(member[2]);
       option =6;
     }
   });
