@@ -111,7 +111,12 @@ function recordUser(bot,event){
   }
   var jar = ["","嗯嗯","哈哈","呵呵","去洗澡","愛睏中。。。。","哦好","我來刷存在感的別理我","讚喔","認真聽中...","good"];
   bot.on('follow', function (event) {
-    event.reply('follow: ' + event.source.userId);
+    cmds.forEach(cmd=>{
+      if(cmd.cmd=="歡迎詞"){
+        event.reply(cmd.response);
+      }
+    });
+    
   });
   
   bot.on('unfollow', function (event) {
@@ -241,6 +246,18 @@ function init(){
     }  
     var x = 0;  
   });
+  //指令資料載入
+  brainData.getRows(3,(err,datas)=>{
+    if(err){
+      console.log(err);
+    }
+    datas.forEach(data=>{
+      var items =[data.cmd,data.response];
+      cmds.push(items);
+      
+    });
+  });
+  
   //會員基本資料載入
   var personal_data = new googleSpreadSheet('1867MiPMvt7_IF9vX3y3MgPhadV0HBN0d86g__HFq3D4');//會員資料
   personal_data.getRows(1,(err,row_data)=>{
@@ -264,6 +281,7 @@ function init(){
   });
     
 }
+var cmds = new Array();
 function searchPersonalData(msg){
   var personal_data = new googleSpreadSheet('1867MiPMvt7_IF9vX3y3MgPhadV0HBN0d86g__HFq3D4');//會員資料
   personal_data.getRows(1,function(err,row_data){
@@ -297,7 +315,9 @@ function parseMembersData(msg){
             resp ="我知道"+member[1]+"是"+member[3]+"的公司哦～";
             break;
           case 2://姓名
-            resp = member[2]+"的資料如下 mobile:"+member[6]+" 公司:"+member[1]+" 地址:"+member[4];
+            resp = new Array();
+            resp.push(member[2]+"的資料如下 mobile:"+member[6]+" 公司:"+member[1]+" 地址:"+member[4]);
+            resp.push("主要產品:"+member[9]);
             return resp;
           case 3://推薦人
             //resp="推薦人";
