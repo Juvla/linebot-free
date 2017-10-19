@@ -271,7 +271,7 @@ function init(){
       items.push(datas.姓名);//2
       var name = datas.姓名;
       xin.push(name.substring(0,2));
-      middlename.push(names.substring(1,4));
+      middlename.push(name.substring(1,4));
       ming.push(name.substring(1,3));
       items.push(datas.推薦人);//3
       items.push(datas.公司地址);//4
@@ -383,7 +383,7 @@ function parseMembersData(msg){
     }else if(option==4){
       return "在這個地區的會友如下："+resp;
     }else if(option==3){
-      return "在我精準的判斷之下／n姓:"+title+"的會友如下resp
+      return "在我精準的判斷之下／n姓:"+title+"的會友如下"+resp;
     }
   }else{
     return resp;
