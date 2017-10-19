@@ -412,7 +412,7 @@ function parseMembersData(msg){
     }else if(option==3){
       return "在我精準的判斷之下 姓:"+title+"的會友如下\n"+resp;
     }else if(option==5){//單一名字
-      return mult[0];
+      return multi[0];
     }
   }else{
     return resp;
