@@ -306,9 +306,9 @@ function searchPersonalData(msg){
 var xin= new Array();
 var ming = new Array();
 var middlename = new Array();
-setTimeout(parseMembersData,5000);
+//setTimeout(parseMembersData,5000);
 function parseMembersData(msg){
-  var msg="江";
+  //var msg="江";
   var resp= "";
   var multi = new Array();
   var option = 0;
@@ -370,6 +370,13 @@ function parseMembersData(msg){
       multi.push(member[2]);
       option =3;
     }else if(msg.indexOf(middlename[yy])!=-1){
+      title= middlename[yy];
+      var word = "";
+      if(msg.indexOf("電話")!=-1){
+        multi.push(title+"的電話如下"+member[6]);
+      }else if(msg.indexOf("地址")){
+        multi.push(title+"的住址如下"+member[4]);
+      }
       multi.push(member[2]);
       option =5;
     }else if(msg.indexOf(ming[yy])!=-1){
@@ -386,7 +393,9 @@ function parseMembersData(msg){
     }else if(option==4){
       return "在這個地區的會友如下："+resp;
     }else if(option==3){
-      return "在我精準的判斷之下／n姓:"+title+"的會友如下"+resp;
+      return "在我精準的判斷之下\n姓:"+title+"的會友如下"+resp;
+    }else if(option==5){//單一名字
+      return resp;
     }
   }else{
     return resp;
