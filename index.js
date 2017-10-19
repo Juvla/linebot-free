@@ -306,9 +306,9 @@ function searchPersonalData(msg){
 var xin= new Array();
 var ming = new Array();
 var middlename = new Array();
-setTimeout(parseMembersData,5000);
+//setTimeout(parseMembersData,5000);
 function parseMembersData(msg){
-  var msg="虹慶";
+  //var msg="虹慶";
   var resp= "";
   var multi = new Array();
   var option = 0;
