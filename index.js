@@ -306,9 +306,9 @@ function searchPersonalData(msg){
 var xin= new Array();
 var ming = new Array();
 var middlename = new Array();
-//setTimeout(parseMembersData,5000);
+setTimeout(parseMembersData,5000);
 function parseMembersData(msg){
-  //var msg="江虹慶";
+  var msg="虹慶";
   var resp= "";
   var multi = new Array();
   var option = 0;
@@ -371,6 +371,7 @@ function parseMembersData(msg){
       
     });   
   });
+  var isfound=false;
   if(!getword){
     membersProfile.forEach((member,yy)=>{
       if(msg.indexOf(xin[yy])!=-1){//姓
@@ -391,9 +392,7 @@ function parseMembersData(msg){
         }
         //multi.push(member[2]);
         option =5;
-      }else if(msg.indexOf(ming[yy])!=-1){
-        multi.push(member[2]);
-        option =6;
+        
       }else{
 
       }
