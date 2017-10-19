@@ -302,13 +302,13 @@ function searchPersonalData(msg){
   });
 
 }
-//setTimeout(parseMembersData,10000);
+setTimeout(parseMembersData,10000);
 var xin= new Array();
 var ming = new Array();
 var middlename = new Array();
-//setTimeout(parseMembersData,5000);
+setTimeout(parseMembersData,5000);
 function parseMembersData(msg){
-  //var msg="江";
+  var msg="虹慶";
   var resp= "";
   var multi = new Array();
   var option = 0;
@@ -371,29 +371,31 @@ function parseMembersData(msg){
       
     });   
   });
-  membersProfile.forEach(member=>{
-    if(msg.indexOf(xin[yy])!=-1&&member[2].indexOf(msg)==-1){//姓
+  membersProfile.forEach((member,yy)=>{
+    if(msg.indexOf(xin[yy])!=-1){//姓
       title = xin[yy];
       multi.push(member[2]);
       option =3;
-    }else if(msg.indexOf(middlename[yy])!=-1&&member[2].indexOf(msg)==-1){
+    }else if(msg.indexOf(middlename[yy])!=-1){
       title= middlename[yy];
       var word = "";
       if(msg.indexOf("電話")!=-1){
         multi.push(title+"的電話如下"+member[6]+"\n");
-      }else if(msg.indexOf("地址")){
+      }else if(msg.indexOf("地址")!=-1){
         multi.push(title+"的住址如下"+member[4]+"\n");
-      }else if(msg.indexOf("外號")){
+      }else if(msg.indexOf("外號")!=-1){
         multi.push(title+"的外號叫做"+member[8]+"\n");
+      }else{
+        multi.push(title+"的資料如下\n"+"電話:"+member[6]+"\n"+"公司名稱："+member[1]+"\n"+"主要產品:"+member[9]+"\n");
       }
       //multi.push(member[2]);
       option =5;
-    }else if(msg.indexOf(ming[yy])!=-1&&member[2].indexOf(msg)==-1){
+    }else if(msg.indexOf(ming[yy])!=-1){
       multi.push(member[2]);
       option =6;
     }
   });
-  
+
   if(multi.length>0){
     multi.forEach((name)=>{
       resp = resp+ name+"\n";
@@ -403,7 +405,7 @@ function parseMembersData(msg){
     }else if(option==4){
       return "在這個地區的會友如下："+resp;
     }else if(option==3){
-      return "在我精準的判斷之下\n姓:"+title+"的會友如下"+resp;
+      return "在我精準的判斷之下 姓:"+title+"的會友如下\n"+resp;
     }else if(option==5){//單一名字
       return resp;
     }
