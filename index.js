@@ -269,6 +269,10 @@ function init(){
       items.push(datas.職稱);//0
       items.push(datas.公司簡稱);//1
       items.push(datas.姓名);//2
+      var name = datas.姓名;
+      xin.push(name.substring(0,2));
+      middlename.push(names.substring(1,4));
+      ming.push(name.substring(1,3));
       items.push(datas.推薦人);//3
       items.push(datas.公司地址);//4
       items.push(datas.公司電話);//5
@@ -298,12 +302,16 @@ function searchPersonalData(msg){
 
 }
 //setTimeout(parseMembersData,10000);
+var xin= new Array();
+var ming = new Array();
+var middlename = new Array();
 function parseMembersData(msg){
   
   var resp= "";
   var multi = new Array();
   var option = 0;
-  membersProfile.forEach((member)=>{
+  var title="";
+  membersProfile.forEach((member,yy)=>{
     member.forEach((detail,index)=>{
       if(typeof detail!="undefined"&&detail!=""&&msg.indexOf(detail)!=-1){
         switch(index){
@@ -355,15 +363,27 @@ function parseMembersData(msg){
       }
       
     });
+    if(msg.indexOf(xin[yy])!=-1){//姓
+      title = xin[yy];
+      multi.push(member[2]);
+      option =3;
+    }else if(msg.indexOf(middlename[yy])!=-1){
+      multi.push(member[2]);
+      option =5;
+    }else if(msg.indexOf(ming[yy]!=-1)){
+      option =6;
+    }
   });
   if(multi.length>0){
     multi.forEach((name)=>{
-      resp = resp+ name+" ";
+      resp = resp+ name+"\n";
     });
     if(option==11){//產品
-      return "據我所知"+resp+" 的公司有在做這個產品哦";
-    }else{
+      return "據我所知\n"+resp+" 的公司有在做這個產品哦";
+    }else if(option==4){
       return "在這個地區的會友如下："+resp;
+    }else if(option==3){
+      return "在我精準的判斷之下／n姓:"+title+"的會友如下resp
     }
   }else{
     return resp;
