@@ -371,11 +371,11 @@ function parseMembersData(msg){
       
     });
    
-    if(msg.indexOf(xin[yy])!=-1&&msg.indexOf(member[2])==-1){//姓
+    if(msg.indexOf(xin[yy])!=-1&&member[2].indexOf(msg)==-1){//姓
       title = xin[yy];
       multi.push(member[2]);
       option =3;
-    }else if(msg.indexOf(middlename[yy])!=-1){
+    }else if(msg.indexOf(middlename[yy])!=-1&&member[2].indexOf(msg)==-1){
       title= middlename[yy];
       var word = "";
       if(msg.indexOf("電話")!=-1){
@@ -387,7 +387,7 @@ function parseMembersData(msg){
       }
       //multi.push(member[2]);
       option =5;
-    }else if(msg.indexOf(ming[yy])!=-1){
+    }else if(msg.indexOf(ming[yy])!=-1&&member[2].indexOf(msg)==-1){
       multi.push(member[2]);
       option =6;
     }
