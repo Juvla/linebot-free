@@ -18,8 +18,7 @@ bot.on('message', function(event) {
     console.log(event); //把收到訊息的 event 印出來看看
         
     
-    if(event.message.type=='text'){
-         
+    if(event.message.type=='text'){         
       var msg = event.message.text;//如果型態是文字
       if(event.source.type=="group"){//聊天室
         parseLogic2(msg,event);
@@ -27,8 +26,6 @@ bot.on('message', function(event) {
         recordUser(bot,event);
         parseLogicFull(msg,event);
       }
-      
-
     }
 });
 /**
