@@ -26,6 +26,7 @@ bot.on('message', function(event) {
         recordUser(bot,event);
         record(bot.getUserProfile.userId,bot.getUserProfile.displayName,msg);
         parseLogicFull(msg,event);
+       
       }
     }
 });
@@ -57,13 +58,13 @@ function recordUser(bot,event){
   function parseLogicFull(msg,event){
     var re = parseMembersData(msg);//先分析會員資料
     console.log(re);
-    if(re!=""){
+    if(re!=""){//有會員資料
       event.reply(re).then((data)=>{//如果有問到會員資料的就送出
         //success          
       }).catch((error)=>{
         console.log(error);
       });
-    }else{
+    }else{//非會員資料
       re = msgEasyParse2(msg);//回應模式
       if(re!=""){
         event.reply(re).then((data)=>{
@@ -82,9 +83,17 @@ function recordUser(bot,event){
           }).catch(function(error){
             console.log(error);
           });
+        }else{//鸚鵡模式
+          msg=msg+" 我不懂 嗚嗚嗚 誰叫我傻逼";
+          event.reply(msg).then(function(data){//echo
+            //success
+            console.log(msg);
+          }).catch(function(error){
+            console.log(error);
+          });
+        }//end if
       }
     }
-  }
   }
   function parseLogic2(msg,event){
    
@@ -397,8 +406,8 @@ function parseMembersData(msg){
 
       }
     });
-    var x =0;
   }
+
 
 
   if(multi.length>0){
@@ -412,7 +421,8 @@ function parseMembersData(msg){
     }else if(option==3){
       return "在我精準的判斷之下 姓:"+title+"的會友如下\n"+resp;
     }else if(option==5){//單一名字
-      return mult[0];
+      
+      return multi[0];
     }
   }else{
     return resp;
